@@ -1,7 +1,11 @@
 import Head from "next/head";
 import { Fragment } from "react";
 import { MainLayout } from "../layouts";
-import { HeroSection, ServicesSection } from "../components/blocks/main";
+import {
+  HeroSection,
+  NewsSection,
+  ServicesSection,
+} from "../components/blocks/main";
 
 export default function Home() {
   return (
@@ -15,6 +19,7 @@ export default function Home() {
       <MainLayout>
         <HeroSection />
         <ServicesSection />
+        <NewsSection />
       </MainLayout>
     </Fragment>
   );

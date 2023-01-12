@@ -3,10 +3,12 @@ import Image from "next/image";
 import { PrimaryLogo } from "../../../../assets/images/logos";
 import { get, map } from "lodash";
 import { footer, footerLinks } from "../../../../mock/footer";
+import dayjs from "dayjs";
 
 const Index: React.FC = () => {
+  const currentYear = dayjs().year();
   return (
-    <footer className="grid grid-cols-12 gap-5 pb-8">
+    <footer className="grid grid-cols-12 gap-5 pb-8 px-[60px]">
       <div className="col-span-12 md:col-span-5 xl:col-span-4 bg-primary-gray xl:px-14 pt-5 lg:pt-14 pb-7 text-white rounded-2xl flex flex-col items-center">
         <Image src={PrimaryLogo} alt={"logo"} />
         <p className="mb-3 mt-6 md:mt-14 text-center">
@@ -26,7 +28,7 @@ const Index: React.FC = () => {
           ))}
         </ul>
         <a href="/" className="text-[#979797] text-sm">
-          &copy; aviahelp.uz, 2022
+          &copy; aviahelp.uz, {currentYear}
         </a>
       </div>
       <div className="col-span-12 md:col-span-7 xl:col-span-8 bg-[#F9F9F9] rounded-2xl px-14 pt-8 md:pt-14 pb-7 text-[#202020] flex flex-col h-full justify-between">
@@ -57,7 +59,7 @@ const Index: React.FC = () => {
             <a href="#">Shartnoma taklifi </a>
           </li>
           <li>
-            <a href="#">To'lov </a>
+            <a href="#">To'lov</a>
           </li>
         </ul>
       </div>
