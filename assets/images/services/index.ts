@@ -8,6 +8,8 @@ import bgCar from "./bg-car.png";
 import bgSofa from "./bg-sofa.png";
 import bgCase from "./bg-case.png";
 import bgMeal from "./bg-meals.png";
+import bgServices from "./bg-services.png";
+
 export {
   carImage,
   sofaImage,
@@ -19,4 +21,5 @@ export {
   bgSofa,
   bgCase,
   bgMeal,
+  bgServices,
 };

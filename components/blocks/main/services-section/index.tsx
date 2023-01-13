@@ -4,6 +4,7 @@ import {
   bgCar,
   bgCase,
   bgMeal,
+  bgServices,
   bgSofa,
   carImage,
   caseImage,
@@ -43,7 +44,7 @@ const ArrowButton = () => {
 
 const Index = () => {
   return (
-    <section className="py-28 px-[60px]">
+    <section className="py-28 px-[60px] ">
       <Heading
         title="Bizning xizmatlar"
         subTitle="Engage active clients at the right time and save time chasing unqualified leads"
@@ -135,6 +136,30 @@ const Index = () => {
             />
           </div>
         </Card>
+      </div>
+      <div className="relative px-[60px] pb-[86px] h-[622px]">
+        <Image
+          src={bgServices}
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          alt={"Arrow right"}
+          className={"-z-10"}
+        />
+        <div className="flex items-end h-full">
+          <div className="max-w-[620px] ">
+            <h2 className=" font-montserrat text-[45px] text-white font-bold leading-[60px] mb-2">
+              Aviachipta sotib olgandan keyingi xizmatlar
+            </h2>
+            <p className="mb-12 text-white text-base font-inter  font-normal">
+              Effortless time tracking and reporting. Save time and money with
+              the time tracker trusted by more than 10,000 organizations.
+            </p>
+            <button className="bg-primary-red px-16 py-4 rounded-[10px] text-[22px] font-medium text-white font-inter">
+              Izlash
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
