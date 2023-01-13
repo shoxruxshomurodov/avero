@@ -7,3 +7,6 @@
 .input-form {
   @apply bg-transparent text-white font-inter font-medium text-xl;
 }
+.food-serving-bg {
+  background-image: url("../images/food-services/food-serving-bg.png");
+}

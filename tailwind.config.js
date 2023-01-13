@@ -18,6 +18,7 @@ module.exports = {
         "secondary-gray": "#7c7c7c",
       },
     },
+
     container: {
       screens: {
         "2xl": "1440px",

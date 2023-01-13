@@ -1,4 +1,6 @@
+import { get, map } from "lodash";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import {
   bgCar,
@@ -13,6 +15,7 @@ import {
   mealImage3,
   sofaImage,
 } from "../../../../assets/images/services";
+import { coopiratives } from "../../../../mock/coopiratives";
 import Card from "../../../card";
 import Heading from "../../../heading";
 
@@ -44,12 +47,12 @@ const ArrowButton = () => {
 
 const Index = () => {
   return (
-    <section className="py-28 px-[60px] ">
+    <section className="pt-28 pb-44 px-[60px]">
       <Heading
         title="Bizning xizmatlar"
         subTitle="Engage active clients at the right time and save time chasing unqualified leads"
       />
-      <div className="grid grid-cols-12 gap-6">
+      <div className="grid grid-cols-12 gap-6 mb-28">
         <Card className="col-span-5 h-[600px] p-9 relative">
           <Heading
             title="O‘rindiqni tanlash"
@@ -137,7 +140,7 @@ const Index = () => {
           </div>
         </Card>
       </div>
-      <div className="relative px-[60px] pb-[86px] h-[622px]">
+      <div className="relative px-[60px] pb-[86px] h-[622px] ">
         <Image
           src={bgServices}
           layout="fill"
@@ -155,9 +158,26 @@ const Index = () => {
               Effortless time tracking and reporting. Save time and money with
               the time tracker trusted by more than 10,000 organizations.
             </p>
-            <button className="bg-primary-red px-16 py-4 rounded-[10px] text-[22px] font-medium text-white font-inter">
+            <Link
+              href={"/client"}
+              className="bg-primary-red px-16 py-4 rounded-[10px] text-[22px] font-medium text-white font-inter"
+            >
               Izlash
-            </button>
+            </Link>
+          </div>
+        </div>
+        <div className="relative">
+          <div className="absolute bg-[#F9EFF1] px-[50px] pb-16 pt-[50px] right-0 rounded-[30px] -top-40 max-w-[530px]">
+            <h3 className="max-w-xs font-inter font-semibold text-xl mb-14">
+              Biz bilan hamkor avia kompaniyalar
+            </h3>
+            <div className="grid grid-cols-12  gap-8 align-middle">
+              {map(coopiratives, (cooperative) => (
+                <div className="col-span-4 flex items-center">
+                  <Image src={get(cooperative, "image")} alt="Logo" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

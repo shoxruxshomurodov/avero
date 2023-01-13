@@ -1,15 +1,16 @@
-import React, { Fragment, ReactFragment, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { Footer, Header } from "./components";
-import { JsxElement } from "typescript";
 
 interface Props {
   children: ReactNode;
+  rest?: {};
+  primary?: boolean;
 }
 
-const Index: React.FC<Props> = ({ children }) => {
+const Index: React.FC<Props> = ({ children, primary }) => {
   return (
     <div className="container mx-auto">
-      <Header />
+      <Header primary={primary} />
       <main>{children}</main>
       <Footer />
     </div>

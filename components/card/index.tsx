@@ -4,11 +4,12 @@ import clsx from "clsx";
 interface CartProps {
   className?: string;
   children: ReactNode | ReactElement;
+  rest?: {};
 }
 
-const Index = ({ children, className }: CartProps) => {
+const Index = ({ children, className, ...rest }: CartProps) => {
   return (
-    <div className={clsx(className, "rounded-[25px] bg-[#F9EFF1]")}>
+    <div className={clsx(className, "rounded-[25px] bg-[#F9EFF1]")} {...rest}>
       {children}
     </div>
   );

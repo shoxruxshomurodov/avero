@@ -1,2 +1,3 @@
 import Heading from "./heading";
-export { Heading };
+import Tab from "./tab";
+export { Heading, Tab };
