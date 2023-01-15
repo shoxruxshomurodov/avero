@@ -4,7 +4,7 @@ import clsx from "clsx";
 interface CartProps {
   className?: string;
   children: ReactNode | ReactElement;
-  rest?: {};
+  rest?: any;
 }
 
 const Index = ({ children, className, ...rest }: CartProps) => {

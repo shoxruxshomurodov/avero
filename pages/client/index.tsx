@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   foodBanner,
   foodCloud,
@@ -14,8 +14,17 @@ import { tabMeal } from "../../assets/images/icons";
 import { Heading, Tab } from "../../components";
 import Card from "../../components/card";
 import { MainLayout } from "../../layouts";
+import { AnimatePresence, motion } from "framer-motion";
+import clsx from "clsx";
 
 const Index = () => {
+  const [isOpenModal, setOpenModal] = useState(false);
+  const menuRef = useRef<any>(null);
+  const scrollToMenu = () => menuRef.current.scrollIntoView();
+
+  const closeModal = () => {
+    setOpenModal(false);
+  };
   return (
     <MainLayout>
       <div className="px-[60px] bg-[#F1F3F6] pb-8 pt-[50px]">
@@ -110,15 +119,20 @@ const Index = () => {
         </nav>
       </div>{" "}
       <Tab />
-      <div className="py-10 px-[60px] grid grid-cols-12 gap-6">
+      <div
+        className={clsx(
+          "py-10 px-[60px] grid grid-cols-12 gap-6",
+          isOpenModal && "hidden"
+        )}
+      >
         <Card className="col-span-4 relative">
           <div className="py-12 pl-11 pr-20 flex flex-col justify-between h-full">
             <h3 className="text-[45px] leading-[60px] font-montserrat font-bold">
               Ovqatingizga oldindan buyurtma bering
             </h3>
             <p className="text-[#90A18B] text-base">
-              O'zingiz uchun eng yaxshi variantni tanlang!. Taomga ketishdan
-              kamida 24 yoki 36 soat oldin buyurtma berishni unutmang*
+              O&apos zingiz uchun eng yaxshi variantni tanlang!. Taomga
+              ketishdan kamida 24 yoki 36 soat oldin buyurtma berishni unutmang*
             </p>
           </div>
           <div className="absolute bg-primary-red p-16 rounded-full top-1/2 -translate-y-1/2 left-1/2 translate-x-2/4 z-10">
@@ -149,6 +163,7 @@ const Index = () => {
               <button
                 type="button"
                 className="bg-primary-red px-9 py-5 rounded-2xl text-white font-medium text-lg z-10 cursor-pointer"
+                onClick={scrollToMenu}
               >
                 Menyu tanlash
               </button>
@@ -169,13 +184,16 @@ const Index = () => {
           </div>
         </Card>
       </div>
-      <section className="px-[60px] py-32">
+      <section className="px-[60px] py-32" ref={menuRef}>
         <Heading
           title="Menyu"
           subTitle="Engage active clients at the right time and save time chasing unqualified leads"
         />
         <div className="grid grid-cols-12 gap-6">
-          <Card className="col-span-3 !bg-transparent">
+          <Card
+            className="col-span-3 !bg-transparent"
+            onClick={() => setOpenModal(true)}
+          >
             <Image
               src={mealImage1}
               alt={"new Image"}
@@ -233,6 +251,95 @@ const Index = () => {
           </Card>
         </div>
       </section>
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter={true}
+        onExitComplete={() => null}
+      >
+        {" "}
+        {isOpenModal && (
+          <motion.div
+            className="backdrop w-full h-full absolute top-[18vh] left-0 z-[100] px-5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              onClick={(e) => e.stopPropagation()}
+              className="w-full min-h-[72vh] bg-white shadow-2xl rounded-3xl p-10"
+              variants={{
+                hidden: {
+                  y: "-100vh",
+                  opacity: 0,
+                },
+                visible: {
+                  y: "0",
+                  opacity: 1,
+                  transition: {
+                    duration: 0.1,
+                    type: "spring",
+                    damping: 25,
+                    stiffness: 500,
+                  },
+                },
+                exit: {
+                  y: "100vh",
+                  opacity: 0,
+                },
+              }}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <div className="flex  justify-between">
+                <div>
+                  <h2 className="text- text-[32px] font-montserrat font-semibold">
+                    Sendvich va salatlar
+                  </h2>
+                  <p className="max-w-sm text-[#7C7C7C] font-inter text-base font-normal">
+                    Engage active clients at the right time and save time
+                    chasing unqualified leads
+                  </p>
+                </div>
+                <div className="text-[#FDFDFE] font-inter font-bold text-sm leading-[16px]">
+                  <div className="flex gap-[10px]">
+                    <button className=" bg-primary-blue px-7 py-4 rounded-[10px]">
+                      Saqlash
+                    </button>
+                    <button className=" bg-primary-red px-7 py-4 rounded-[10px]">
+                      Hoziroq to’lash
+                    </button>
+                    <button
+                      className="bg-[#ECEEF2] px-3 rounded-[10px]"
+                      onClick={closeModal}
+                    >
+                      <svg
+                        width="30"
+                        height="30"
+                        viewBox="0 0 30 30"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clip-path="url(#clip0_429_1477)">
+                          <path
+                            d="M14.9999 13.2324L21.1874 7.04492L22.9549 8.81242L16.7674 14.9999L22.9549 21.1874L21.1874 22.9549L14.9999 16.7674L8.81242 22.9549L7.04492 21.1874L13.2324 14.9999L7.04492 8.81242L8.81242 7.04492L14.9999 13.2324Z"
+                            fill="black"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_429_1477">
+                            <rect width="30" height="30" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </MainLayout>
   );
 };

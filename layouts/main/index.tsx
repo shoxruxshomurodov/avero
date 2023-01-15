@@ -11,7 +11,7 @@ const Index: React.FC<Props> = ({ children, primary }) => {
   return (
     <div className="container mx-auto">
       <Header primary={primary} />
-      <main>{children}</main>
+      <main className="relative">{children}</main>
       <Footer />
     </div>
   );
